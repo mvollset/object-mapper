@@ -1,11 +1,11 @@
 "use strict";
 
-var _ = require('./helper-functions');
-var mapper = {};
+const _ = require('./helper-functions');
+let mapper = {};
 mapper.get = function (valueobject, jsonpath) {
-    var parts = jsonpath.split('.');
-    var v = valueobject;
-    var i = 0;
+    const parts = jsonpath.split('.');
+    let v = valueobject;
+    let i = 0;
     for (i; i < parts.length - 1; i++) {
         if (v[parts[i]])
             v = v[parts[i]];
@@ -13,9 +13,9 @@ mapper.get = function (valueobject, jsonpath) {
     return v[parts[i]];
 };
 mapper.set = function (valueobject, jsonpath, value) {
-    var parts = jsonpath.split('.');
-    var v = valueobject;
-    var i = 0;
+    const parts = jsonpath.split('.');
+    let v = valueobject;
+    let i = 0;
     for (i; i < parts.length - 1; i++) {
         if (!v[parts[i]]) {
             v[parts[i]] = {};
@@ -26,16 +26,16 @@ mapper.set = function (valueobject, jsonpath, value) {
     return;
 };
 mapper.flatten = function (mapobject, prefix) {
-    var res = {};
+    let res = {};
     if (!prefix) {
         prefix = "";
     }
     else
         prefix += "."
-    var keys = _.keys(mapobject);
-    for (var i = 0; i < keys.length; i++) {
-        let m = mapobject[keys[i]];
-        var prefixedKey = prefix + keys[i]
+    const keys = _.keys(mapobject);
+    for (let i = 0; i < keys.length; i++) {
+        const m = mapobject[keys[i]];
+        const prefixedKey = prefix + keys[i]
         if (_.isObject(m) && !_.isFunction(m)) {
             if (m.$fixed === true) {
                 res[prefixedKey] =
@@ -54,16 +54,16 @@ mapper.flatten = function (mapobject, prefix) {
     return res;
 }
 mapper.create = function (mapobject) {
-    var themap = {};
+    let themap = {};
     themap._map = mapper.flatten(mapobject);
     themap.map = function (sourceobject) {
-        var result = {};
-        var keys = _.keys(themap._map);
-        for (var i = 0; i < keys.length; i++) {
-            var key = keys[i];
-            var m = themap._map[key];
+        let result = {};
+        const keys = _.keys(themap._map);
+        for (let i = 0; i < keys.length; i++) {
+            let key = keys[i];
+            let m = themap._map[key];
             if (_.isFunction(m)) {
-                var r = m(mapper.get(sourceobject, key), sourceobject);
+                let r = m(mapper.get(sourceobject, key), sourceobject);
                 mapper.set(result, r.name ? r.name : key, r.value);
             }
             else if (_.isObject(m)) {
