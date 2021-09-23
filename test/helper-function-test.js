@@ -1,3 +1,4 @@
+'use strict';
 const assert = require('chai').assert;
 const helpers = require('../module/helper-functions');
 describe('utility functions', function () {

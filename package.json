@@ -1,6 +1,6 @@
 {
   "name": "object-mapper",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Package for transforming objects",
   "main": "index.js",
   "scripts": {

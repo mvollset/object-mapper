@@ -1,4 +1,5 @@
 "use strict";
+
 var _ = require('./helper-functions');
 var mapper = {};
 mapper.get = function (valueobject, jsonpath) {

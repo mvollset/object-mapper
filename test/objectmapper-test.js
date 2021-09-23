@@ -1,3 +1,4 @@
+'use strict';
 const assert = require('chai').assert;
 const mapper = require('../module/objectmapper');
 describe('Objectmapper functions', function () {
