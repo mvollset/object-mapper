@@ -1,5 +1,8 @@
-# object-mapper
+# my-object-mapper
 Tool for map and transforming data in an declarative way.
+
+## Disclaimer
+I Just discovered that there is a module called object-mapper that is really similar to this one. It may even be better, as it looks like it handles arrays in a better way.
 
 # API
 ```js
@@ -10,7 +13,7 @@ var themap = {
             return {value:sourceobject.value1 + sourceobject.value2}
         }
 }
-var mapper=requirer('objectmapper');
+var mapper=requirer('my-object-mapper');
 var map=mapper.create(themap);
 var res=map.map({
     value1:2,
@@ -34,7 +37,7 @@ var themap = {
                 value:"Yihaa"
         }
 }
-var mapper=requirer('objectmapper');
+var mapper=require('my-object-mapper');
 var map=mapper.create(themap);
 var res=map.map({
     value1:2,
@@ -60,7 +63,7 @@ var themap = {
         //Or write with . notation
         "someObject.someInnerObject.val1:"value1"
 }
-var mapper=requirer('objectmapper');
+var mapper=require('my-object-mapper');
 var map=mapper.create(themap);
 var res=map.map({
     value1:2,
